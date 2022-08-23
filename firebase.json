@@ -1,6 +1,5 @@
 {
   "hosting": {
-    "site": "react-auth-df71b",
     "public": "build",
     "ignore": [
       "firebase.json",
