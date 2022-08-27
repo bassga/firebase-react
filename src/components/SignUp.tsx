@@ -1,20 +1,19 @@
 // import { createUserWithEmailAndPassword, getAuth } from 'firebase/auth'
-import { useState } from 'react'
+import { useRef } from 'react'
 
 const SignUp = () => {
-  // const emailRef = useRef<HTMLInputElement>(null)
-  // const emailPassword = useRef<HTMLInputElement>(null)
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
+  const emailRef = useRef<HTMLInputElement>(null)
+  const emailPassword = useRef<HTMLInputElement>(null)
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-    console.log(email, password)
-  }
-  const handleChangeEmail = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setEmail(event.currentTarget.value)
-  }
-  const handleChangePassword = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setPassword(event.currentTarget.value)
+    if (
+      !(
+        emailRef.current instanceof HTMLInputElement &&
+        emailPassword.current instanceof HTMLInputElement
+      )
+    )
+      return
+    console.log(emailRef.current.value, emailPassword.current.value)
   }
   return (
     <div>
@@ -22,20 +21,11 @@ const SignUp = () => {
       <form onSubmit={(event) => handleSubmit(event)}>
         <div>
           <label>メールアドレス</label>
-          <input
-            name="email"
-            type="email"
-            placeholder="email"
-            onChange={(event) => handleChangeEmail(event)}
-          />
+          <input name="email" type="email" placeholder="email" ref={emailRef} />
         </div>
         <div>
           <label>パスワード</label>
-          <input
-            name="password"
-            type="password"
-            onChange={(event) => handleChangePassword(event)}
-          />
+          <input name="password" type="password" ref={emailPassword} />
         </div>
         <div>
           <button>登録</button>
