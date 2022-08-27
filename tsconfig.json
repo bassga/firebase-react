@@ -18,8 +18,11 @@
     "noImplicitReturns": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "baseUrl": "src"
+    "baseUrl": "./",
+    "paths": {
+      "~/*": ["*"]
+    }
   },
-  "include": ["src/**/*"],
+  "include": ["src/**/*.ts", "src/**/*.tsx"],
   "exclude": ["dist", "node_modules"]
 }
