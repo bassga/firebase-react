@@ -11,7 +11,6 @@ const SignUp = () => {
   const [password, setPassword] = useState('')
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-    console.log(email, password)
     createUserWithEmailAndPassword(auth, email, password)
   }
   const handleChangeEmail = (event: React.ChangeEvent<HTMLInputElement>) => {

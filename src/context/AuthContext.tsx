@@ -24,7 +24,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     const unsubscribed = auth.onAuthStateChanged((user) => {
-      console.log(user)
       setUser(user)
       setLoading(false)
     })
