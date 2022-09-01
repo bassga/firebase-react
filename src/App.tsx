@@ -14,7 +14,6 @@ function App() {
       <div style={{ margin: '2em' }}>
         <BrowserRouter>
           <Routes>
-            {/* <Route path="/" element={<Home />} /> */}
             <Route
               path="/"
               element={
