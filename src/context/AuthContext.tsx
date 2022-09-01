@@ -15,20 +15,27 @@ export function useAuthContext() {
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<User | null>(null)
+  const [loading, setLoading] = useState<Boolean>(true)
 
   const value = {
     user,
+    loading,
   }
 
   useEffect(() => {
     const unsubscribed = auth.onAuthStateChanged((user) => {
       console.log(user)
       setUser(user)
+      setLoading(false)
     })
     return () => {
       unsubscribed()
     }
   }, [])
 
-  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
+  return (
+    <AuthContext.Provider value={value}>
+      {!loading && children}
+    </AuthContext.Provider>
+  )
 }

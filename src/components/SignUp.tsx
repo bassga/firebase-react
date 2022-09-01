@@ -2,6 +2,7 @@
 import { useAuthContext } from '../context/AuthContext'
 import { createUserWithEmailAndPassword } from 'firebase/auth'
 import { useState } from 'react'
+import { Navigate } from 'react-router-dom'
 import { auth } from 'src/firebase'
 
 const SignUp = () => {
@@ -20,9 +21,9 @@ const SignUp = () => {
     setPassword(event.currentTarget.value)
   }
 
-  return (
+  return !user ? (
     <div>
-      <h1>ユーザー登録 {user?.email}</h1>
+      <h1>ユーザー登録</h1>
       <form onSubmit={(event) => handleSubmit(event)}>
         <div>
           <label>メールアドレス</label>
@@ -46,6 +47,8 @@ const SignUp = () => {
         </div>
       </form>
     </div>
+  ) : (
+    <Navigate to="/Home" replace />
   )
 }
 

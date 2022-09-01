@@ -1,8 +1,11 @@
+import Home from './components/Home'
 import Login from './components/Login'
+import { NotFound } from './components/NotFound'
+import { PrivateRoute } from './components/PrivateRoute'
+import PublicRoute from './components/PublicRoute'
+import SignUp from './components/SignUp'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import 'src/App.css'
-import Home from 'src/components/Home'
-import SignUp from 'src/components/SignUp'
 import { AuthProvider } from 'src/context/AuthContext'
 
 function App() {
@@ -11,9 +14,32 @@ function App() {
       <div style={{ margin: '2em' }}>
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/signup" element={<SignUp />} />
-            <Route path="/login" element={<Login />} />
+            {/* <Route path="/" element={<Home />} /> */}
+            <Route
+              path="/"
+              element={
+                <PrivateRoute>
+                  <Home />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/signup"
+              element={
+                <PublicRoute>
+                  <SignUp />
+                </PublicRoute>
+              }
+            />
+            <Route
+              path="/login"
+              element={
+                <PublicRoute>
+                  <Login />
+                </PublicRoute>
+              }
+            />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
       </div>
