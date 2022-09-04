@@ -37,4 +37,6 @@ jobs:
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_REACT_AUTH_DF71B }}'
           projectId: react-auth-df71b
 
-      - run: echo "${{ steps.deploy-site.outputs.urls }}"
+      # - run: echo "${{ steps.deploy-site.outputs.urls }}"
+      - name: Every time
+        run: echo "This step will always run"
