@@ -40,5 +40,4 @@ jobs:
           channelId: live
           projectId: react-auth-df71b
 
-      - name: result
-        run: echo "${{ steps.deploy-site.outputs.urls }}"
+      - run: echo "${{ steps.deploy-site.outputs.urls }}"
