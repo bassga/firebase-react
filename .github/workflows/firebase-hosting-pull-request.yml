@@ -30,14 +30,13 @@ jobs:
         run: yarn list
 
       - run: yarn install --frozen-lockfile && yarn run build
-      - id: deploy-site
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_REACT_AUTH_DF71B }}'
           projectId: react-auth-df71b
+        id: deploy-site
 
-      # - run: echo "${{ steps.deploy-site.outputs.urls }}"
       - if: ${{ steps.deploy-site.outputs.urls != null }}
         continue-on-error: true
         run: echo "This step will always run"
