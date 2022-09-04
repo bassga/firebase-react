@@ -38,4 +38,4 @@ jobs:
           projectId: react-auth-df71b
         # id: deploy-site
 
-      - run: echo "${{ steps.deploy-site.outputs.urls }}"
+      - run: echo "${{ steps.deploy-site.outputs }}"
