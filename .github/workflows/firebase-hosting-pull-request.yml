@@ -38,5 +38,6 @@ jobs:
           projectId: react-auth-df71b
 
       # - run: echo "${{ steps.deploy-site.outputs.urls }}"
-      - name: Every time
+      - if: ${{ steps.deploy-site.outputs.urls != null }}
+        continue-on-error: true
         run: echo "This step will always run"
