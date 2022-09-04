@@ -32,13 +32,9 @@ jobs:
         run: yarn list
 
       - run: yarn install && yarn run build
-      - id: deploy-site
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_REACT_AUTH_DF71B }}'
           channelId: live
           projectId: react-auth-df71b
-
-      - name: result
-        run: echo "${{ steps.deploy-site.outputs.urls }}"
